@@ -6,19 +6,16 @@ class Program
     static void Main(string[] args)
     {
         Console.Clear();
-        
-        var textA = new KlingonText(File.ReadAllText("Texts/A.txt"));
-        Console.WriteLine($"Text A preposition ammount: {textA.PrepositionCount}");
-        Console.WriteLine($"Text A verb ammount: {textA.VerbCount}");
-        Console.WriteLine($"Text A verb ammount (first person): {textA.VerbInFirstPersonCount}");
-        Console.WriteLine($"Text A vocabulary: {textA.Vocabulary}");
-        Console.WriteLine($"Text A beautiful distinct numbers quantity: {textA.BeautifulDistinctNumbers.Length}");
 
-        var textB = new KlingonText(File.ReadAllText("Texts/B.txt"));
-        Console.WriteLine($"\nText B preposition ammount: {textB.PrepositionCount}");
-        Console.WriteLine($"Text B verb ammount: {textB.VerbCount}");
-        Console.WriteLine($"Text B verb ammount (first person): {textB.VerbInFirstPersonCount}");
-        Console.WriteLine($"Text B vocabulary: {textB.Vocabulary}");
-        Console.WriteLine($"Text B beautiful distinct numbers quantity: {textB.BeautifulDistinctNumbers.Length}");
+        foreach(var file in Directory.GetFiles("./Texts"))
+        {
+            var text = new KlingonText(File.ReadAllText(file));
+            var cleanFileName = file.Replace("./Texts\\", "").Replace(".txt", "");
+            Console.WriteLine($"Text {cleanFileName} preposition ammount: {text.PrepositionCount}");
+            Console.WriteLine($"Text {cleanFileName} verb ammount: {text.VerbCount}");
+            Console.WriteLine($"Text {cleanFileName} verb ammount (first person): {text.VerbInFirstPersonCount}");
+            Console.WriteLine($"Text {cleanFileName} vocabulary: {text.Vocabulary}");
+            Console.WriteLine($"Text {cleanFileName} beautiful distinct numbers quantity: {text.BeautifulDistinctNumbers.Length}\n");
+        }
     }
 }
