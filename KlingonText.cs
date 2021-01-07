@@ -28,11 +28,11 @@ public class KlingonText
         ['s'] = 19
     };
     
-    public string Text { get; set; }
-    public int PrepositionCount { get; set; }
-    public int VerbCount { get; set; }
-    public int VerbInFirstPersonCount { get; set; }
-    public ulong[] BeautifulDistinctNumbersInText { get; set; }
+    public string Text { get; }
+    public int PrepositionCount { get; }
+    public int VerbCount { get; }
+    public int VerbInFirstPersonCount { get; }
+    public ulong[] BeautifulDistinctNumbers { get; }
 
     public KlingonText(string text)
     {
@@ -40,7 +40,7 @@ public class KlingonText
         PrepositionCount = GetPrepositionCount();
         VerbCount = GetVerbCount();
         VerbInFirstPersonCount = GetVerbCount(firstPersonOnly: true);
-        BeautifulDistinctNumbersInText = GetDistinctNumbersInText();
+        BeautifulDistinctNumbers = GetBeautifulDistinctNumbers();
     }
 
     bool isLetterFoo(char letter)
@@ -84,7 +84,7 @@ public class KlingonText
         return verbCount;
     }
 
-    ulong[] GetDistinctNumbersInText()
+    ulong[] GetBeautifulDistinctNumbers()
     {
         var words = Text.Split(" ");
         ulong[] numbers = new ulong[words.Length];
