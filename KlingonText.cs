@@ -1,38 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 public class KlingonText
 {
-    static Dictionary<char, int> _letterNumberValues = new Dictionary<char, int> ()
-    {
-        ['k'] = 0,
-        ['b'] = 1,
-        ['w'] = 2,
-        ['r'] = 3,
-        ['q'] = 4,
-        ['d'] = 5,
-        ['n'] = 6,
-        ['f'] = 7,
-        ['x'] = 8,
-        ['j'] = 9,
-        ['m'] = 10,
-        ['l'] = 11,
-        ['v'] = 12,
-        ['h'] = 13,
-        ['t'] = 14,
-        ['c'] = 15,
-        ['g'] = 16,
-        ['z'] = 17,
-        ['p'] = 18,
-        ['s'] = 19
-    };
-    
     public string Text { get; }
     public int PrepositionCount { get; }
     public int VerbCount { get; }
     public int VerbInFirstPersonCount { get; }
-    public string[] Vocabulary { get; }
+    public string Vocabulary { get; }
     public ulong[] BeautifulDistinctNumbers { get; }
 
     public KlingonText(string text)
@@ -45,11 +20,6 @@ public class KlingonText
         BeautifulDistinctNumbers = GetBeautifulDistinctNumbers();
     }
 
-    bool isLetterFoo(char letter)
-    {
-        return letter == 's' || letter == 'l' || letter == 'f' || letter == 'w' || letter == 'k';
-    }
-
     int GetPrepositionCount()
     {
         var words = Text.Split(" ");
@@ -58,7 +28,7 @@ public class KlingonText
         foreach (var word in words) {
             var isLength3 = word.Length == 3;
             var doesntHaveD = !word.Contains('d');
-            var isLastLetterTypeBar = !isLetterFoo(word[2]);
+            var isLastLetterTypeBar = !KlingonAlphabetUtils.isLetterFoo(word[2]);
 
             if (isLength3 && doesntHaveD && isLastLetterTypeBar)
                 prepositionCount++;
@@ -74,9 +44,9 @@ public class KlingonText
 
         foreach (var word in words) {
             var isLengthEqualOrGreaterThan8 = word.Length >= 8;
-            var isLastLetterTypeFoo = isLetterFoo(word[word.Length - 1]);
+            var isLastLetterTypeFoo = KlingonAlphabetUtils.isLetterFoo(word[word.Length - 1]);
 
-            if (firstPersonOnly && isLetterFoo(word[0]))
+            if (firstPersonOnly && KlingonAlphabetUtils.isLetterFoo(word[0]))
                 continue;
 
             if (isLengthEqualOrGreaterThan8 && isLastLetterTypeFoo)
@@ -86,9 +56,13 @@ public class KlingonText
         return verbCount;
     }
 
-    string[] GetVocabulary()
+    string GetVocabulary()
     {
-        return new string[1];
+        var words = Text.Split(" ");
+
+        Array.Sort<string>(words, KlingonAlphabetUtils.CompareWordsAlphabeticaly);
+
+        return String.Join(' ', words);
     }
 
     ulong[] GetBeautifulDistinctNumbers()
@@ -110,7 +84,7 @@ public class KlingonText
 
         for (var i = 0; i < word.Length; i++)
         {
-            var add = _letterNumberValues[word[i]] * Math.Pow(20, i); 
+            var add = KlingonAlphabetUtils.GetLetterNumberValue(word[i]) * Math.Pow(20, i); 
             value += (ulong) add;
         }
 
