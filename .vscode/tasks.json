@@ -25,7 +25,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/klingon.csproj",
+                "${workspaceFolder}/project.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -37,7 +37,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/klingon.csproj",
+                "${workspaceFolder}/project.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -50,7 +50,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/klingon.csproj",
+                "${workspaceFolder}/project.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
