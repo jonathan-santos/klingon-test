@@ -32,6 +32,7 @@ public class KlingonText
     public int PrepositionCount { get; }
     public int VerbCount { get; }
     public int VerbInFirstPersonCount { get; }
+    public string[] Vocabulary { get; }
     public ulong[] BeautifulDistinctNumbers { get; }
 
     public KlingonText(string text)
@@ -40,6 +41,7 @@ public class KlingonText
         PrepositionCount = GetPrepositionCount();
         VerbCount = GetVerbCount();
         VerbInFirstPersonCount = GetVerbCount(firstPersonOnly: true);
+        Vocabulary = GetVocabulary();
         BeautifulDistinctNumbers = GetBeautifulDistinctNumbers();
     }
 
@@ -82,6 +84,11 @@ public class KlingonText
         }
 
         return verbCount;
+    }
+
+    string[] GetVocabulary()
+    {
+        return new string[1];
     }
 
     ulong[] GetBeautifulDistinctNumbers()
