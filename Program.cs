@@ -10,7 +10,7 @@ class Program
         foreach(var file in Directory.GetFiles("./Texts"))
         {
             var text = new KlingonText(File.ReadAllText(file));
-            var cleanFileName = file.Replace("./Texts\\", "").Replace(".txt", "");
+            var cleanFileName = file.Replace("./Texts\\", "").Replace("./Texts/", "").Replace(".txt", "");
             Console.WriteLine($"Text {cleanFileName} preposition ammount: {text.PrepositionCount}");
             Console.WriteLine($"Text {cleanFileName} verb ammount: {text.VerbCount}");
             Console.WriteLine($"Text {cleanFileName} verb ammount (first person): {text.VerbInFirstPersonCount}");
