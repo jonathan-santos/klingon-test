@@ -7,7 +7,7 @@ class Program
     {
         Console.Clear();
 
-        foreach(var file in Directory.GetFiles(".tTexts"))
+        foreach(var file in Directory.GetFiles("texts"))
         {
             var text = new KlingonText(File.ReadAllText(file));
             var cleanFileName = file.Replace("./texts\\", "").Replace("./texts/", "").Replace(".txt", "");
