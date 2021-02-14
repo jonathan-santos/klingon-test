@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public static class KlingonAlphabetUtils
+public static class KlingonUtils
 {
     static Dictionary<char, int> _letterNumberValues = new()
     {

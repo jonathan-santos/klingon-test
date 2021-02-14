@@ -28,11 +28,11 @@ class App
         }
 
         var selectedText = textFiles[AnsiConsole.Prompt(selectionPrompt)];
-        var klingonText = new KlingonText(File.ReadAllText(selectedText));
-        AnsiConsole.MarkupLine($"\n[bold yellow]Preposition Ammount[/]: [green]{klingonText.PrepositionCount}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]Verb Ammount[/]: [green]{klingonText.VerbCount}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]First Person Verb Ammount[/]: [green]{klingonText.VerbInFirstPersonCount}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]Beautiful distinct numbers Ammount[/]: [green]{klingonText.BeautifulDistinctNumbers.Length}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]Vocabulary[/]: \n[green]{klingonText.Vocabulary}[/]");
+        var KlingonTextAnalysis = new KlingonTextAnalysis(File.ReadAllText(selectedText));
+        AnsiConsole.MarkupLine($"\n[bold yellow]Preposition Ammount[/]: [green]{KlingonTextAnalysis.Prepositions.Length}[/]");
+        AnsiConsole.MarkupLine($"[bold yellow]Verb Ammount[/]: [green]{KlingonTextAnalysis.Verbs.Length}[/]");
+        AnsiConsole.MarkupLine($"[bold yellow]First Person Verb Ammount[/]: [green]{KlingonTextAnalysis.VerbsInFirstPerson.Length}[/]");
+        AnsiConsole.MarkupLine($"[bold yellow]Beautiful distinct numbers Ammount[/]: [green]{KlingonTextAnalysis.BeautifulDistinctNumbers.Length}[/]");
+        AnsiConsole.MarkupLine($"[bold yellow]Vocabulary Ammount[/]: [green]{KlingonTextAnalysis.Vocabulary.Length}[/]");
     }
 }
