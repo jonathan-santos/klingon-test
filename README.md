@@ -1,5 +1,23 @@
 # Programming logic test of Klingon
-## The language
+## My project
+
+To run my project which is itself a solution to the test, first have [.net 5](https://dotnet.microsoft.com/download/dotnet/5.0) installed in your machine.
+
+### To run project
+Just use the `run` command from `dotnet` in the project root:
+
+``` bash
+dotnet run
+```
+
+### To run the project tests
+Just use the `test` command from `dotnet` in the project root:
+
+``` bash
+dotnet test
+```
+
+## The Klingon Language test
 A scroll was found with two Texts, [A](./texts/A.txt) and [B](./texts/B.txt):
 
 This scroll is in the ancient and mysterious language Klingon. After many years of study, the scholars already discovered a few characteristics of this language.
@@ -8,19 +26,19 @@ Firstly, the Klingon letters are classified into two groups:
 - The letters `s`, `l`, `f`, `w` and `k` are letters of type `foo`
 - All the other letters are of type `bar`
 
-## Prepositions
+### Prepositions
 The Scholars found that prepositions in Klingon are words of 3 letters that finished in a letter of type `bar`, which doesn't have a letter `d`. With that in mind, it's possible to see that there are 63 prepositions in text A.
 
 **Challenge:** How many prepositions are in text B?
 
-## Verbs
+### Verbs
 Another interesting fact found by the scholars is that in Klingon, the verbs are always words composed of 8 or more letters that finish in a letter of type `foo`. And not only that, if a verb starts with a letter of type bar, the verb is in first person.
 
 Analyzing text A it's possible to identify 26 verbs, of which 23 are in first person.
 
 **Challenge:** How many verbs are in text B?
 
-## Vocabulary
+### Vocabulary
 A university professor will use texts A and B to teach Klingon to students. But, in order to better help student's to understand the text, this professor needs to create a vocabulary list for each text, this is, a ordered list (and without repetitions) of words that appear in each one of the texts.
 
 In Klingon, as in the English alphabet, the words are ordered lexically, but the problem is that in Klingon the order of letters are different from our own. The Klingon alphabet order is: `kbwrqdnfxjmlvhtcgzps`. So, when doing theses lists, the professor needs to respect the Klingon letter alphabetic order.
@@ -33,7 +51,7 @@ kkr kkqrz kks kbf kwq kwlr kwzjrb krcbp krs kqqbz kqlxjmdn knwgqk kng knpprkz kn
 
 **Challenge:** Create a vocabulary for the Text B
 
-## Numbers
+### Numbers
 In Klingon words are also numbers of base 20, where each letter is a digit and, numbers are ordered from the less valuable to the most valuable (the inverse of our system). Which means that the first position is the unit, the second position is worth 20, the third is worth 400 and, onward. The values of the letters are based on the order in which they appear in Klingon Alphabet (which is different from our own, as seen above), so the first letter (`k`) represents 0, and the second letter (`b`) is worth 1, and onward, until the last letter (`s`) which is worth 19.
 
 For example, the word `vwv` has the numeric value of 4852.
