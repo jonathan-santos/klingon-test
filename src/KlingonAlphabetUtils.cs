@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public static class KlingonAlphabetUtils
 {
-    static Dictionary<char, int> _letterNumberValues = new Dictionary<char, int> ()
+    static Dictionary<char, int> _letterNumberValues = new()
     {
         ['k'] = 0,
         ['b'] = 1,
@@ -27,17 +27,30 @@ public static class KlingonAlphabetUtils
         ['s'] = 19
     };
 
-    public static bool isLetterFoo(char letter)
+    public static bool IsLetterFoo(char letter)
     {
         return letter == 's' || letter == 'l' || letter == 'f' || letter == 'w' || letter == 'k';
     }
 
-    public static int GetLetterNumberValue(char letter)
+    public static int ConvertLetterToNumber(char letter)
     {
         return _letterNumberValues[letter];
     }
 
-    public static int CompareWordsAlphabeticaly(string word1, string word2)
+    public static ulong ConvertWordToNumber(string word)
+    {
+        ulong value = 0;
+
+        for (var i = 0; i < word.Length; i++)
+        {
+            var add = ConvertLetterToNumber(word[i]) * Math.Pow(20, i); 
+            value += (ulong) add;
+        }
+
+        return value;
+    }
+
+    public static int CompareWordsLexically(string word1, string word2)
     {
         for (int i = 0; i < Math.Min(word1.Length, word2.Length); i++) { 
             if (word1[i] == word2[i]) 
