@@ -39,8 +39,8 @@ public class KlingonTextAnalysisTest
     }
 
     [Test]
-    public void MustGetBeautifulDistinctNumbers()
+    public void MustGetBeautifulNumbers()
     {
-        Assert.AreEqual(126, this._KlingonTextAnalysis.BeautifulDistinctNumbers.Length);
+        Assert.AreEqual(126, this._KlingonTextAnalysis.BeautifulNumbers.Length);
     }
 }

@@ -27,6 +27,28 @@ public static class KlingonUtils
         ['s'] = 19
     };
 
+    public static bool IsWordPreposition(string word)
+    {
+        var isLength3 = word.Length == 3;
+        var doesntHaveD = !word.Contains('d');
+        var isLastLetterTypeBar = !KlingonUtils.IsLetterFoo(word[2]);
+
+        return isLength3 && doesntHaveD && isLastLetterTypeBar;
+    }
+
+    public static bool IsWordVerb(string word)
+    {
+        var isLengthEqualOrGreaterThan8 = word.Length >= 8;
+        var isLastLetterTypeFoo = KlingonUtils.IsLetterFoo(word[word.Length - 1]);
+
+        return isLengthEqualOrGreaterThan8 && isLastLetterTypeFoo;
+    }
+
+    public static bool isVerbInFirstPerson(string verb)
+    {
+        return !IsLetterFoo(verb[0]);
+    }
+
     public static bool IsLetterFoo(char letter)
     {
         return letter == 's' || letter == 'l' || letter == 'f' || letter == 'w' || letter == 'k';
@@ -48,6 +70,11 @@ public static class KlingonUtils
         }
 
         return value;
+    }
+
+    public static bool IsNumberBeautiful(ulong number)
+    {
+        return number >= 440566 && number % 3 == 0;
     }
 
     public static int CompareWordsLexically(string word1, string word2)
