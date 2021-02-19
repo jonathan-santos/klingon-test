@@ -29,6 +29,9 @@ public static class KlingonUtils
 
     public static bool IsWordPreposition(string word)
     {
+        if (word.Length < 3)
+            return false;
+        
         var isLength3 = word.Length == 3;
         var doesntHaveD = !word.Contains('d');
         var isLastLetterTypeBar = !KlingonUtils.IsLetterFoo(word[2]);
@@ -56,6 +59,9 @@ public static class KlingonUtils
 
     public static int ConvertLetterToNumber(char letter)
     {
+        if (!_letterNumberValues.ContainsKey(letter))
+            return 0;
+
         return _letterNumberValues[letter];
     }
 

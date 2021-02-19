@@ -14,6 +14,17 @@ public class KlingonTextAnalysis
     public KlingonTextAnalysis(string text)
     {
         this.Text = text;
+
+        if (String.IsNullOrWhiteSpace(text))
+        {
+            this.Prepositions = new string[0];
+            this.Verbs = new string[0];
+            this.VerbsInFirstPerson = new string[0];
+            this.Vocabulary = new string[0];
+            this.BeautifulNumbers = new ulong[0];
+            return;   
+        }
+        
         AnalyseText();
     }
 
