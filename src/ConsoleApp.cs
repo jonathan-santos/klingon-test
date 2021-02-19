@@ -72,10 +72,16 @@ class ConsoleApp
     void PrintTextAnalysis(string text)
     {
         var KlingonTextAnalysis = new KlingonTextAnalysis(text);
-        AnsiConsole.MarkupLine($"[bold yellow]Preposition Ammount[/]: [green]{KlingonTextAnalysis.Prepositions.Length}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]Verb Ammount[/]: [green]{KlingonTextAnalysis.Verbs.Length}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]First Person Verb Ammount[/]: [green]{KlingonTextAnalysis.VerbsInFirstPerson.Length}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]Beautiful distinct numbers Ammount[/]: [green]{KlingonTextAnalysis.BeautifulNumbers.Length}[/]");
-        AnsiConsole.MarkupLine($"[bold yellow]Vocabulary Ammount[/]: [green]{KlingonTextAnalysis.Vocabulary.Length}[/]");
+        PrintTextProperty("Prepositions", KlingonTextAnalysis.Prepositions, "yellow");
+        PrintTextProperty("Verbs", KlingonTextAnalysis.Verbs, "red");
+        PrintTextProperty("Verbs in First Person", KlingonTextAnalysis.VerbsInFirstPerson, "darkorange");
+        PrintTextProperty("Vocabulary", KlingonTextAnalysis.Vocabulary, "green");
+        PrintTextProperty("Beautiful Numbers", KlingonTextAnalysis.BeautifulNumbers, "blue");
+    }
+
+    void PrintTextProperty<T>(string displayName, T[] property, string colorTitle)
+    {
+        AnsiConsole.MarkupLine($"\n[bold {colorTitle}]{displayName} ({property.Length})[/]:");
+        AnsiConsole.MarkupLine($"[white]{String.Join(' ', property)}[/]");
     }
 }
